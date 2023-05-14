@@ -325,7 +325,7 @@ class Hex:
             markers[i] = markers[i - 1] + " "
 
         for row in range(6):
-            line = list("A" if x == 1 else "B" for x in self.board[row])
+            line = list("A" if x == 1 else "B" if x == -1 else "0" for x in self.board[row])
             print(markers[row] + ' '.join(map(str, line)))
 
         print()
