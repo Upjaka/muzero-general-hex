@@ -320,11 +320,12 @@ class Hex:
             return False
 
     def render(self):
-        markers = [""]
+        markers = ["", "", "", "", "", ""]
         for i in range(1, 6):
-            markers[i] = markers[i - 1] + "  "
+            markers[i] = markers[i - 1] + " "
 
         for row in range(6):
-            print(markers[row] + ' '.join(map(str, self.board[row])))
+            line = list("A" if x == 1 else "B" for x in self.board[row])
+            print(markers[row] + ' '.join(map(str, line)))
 
         print()
