@@ -67,8 +67,8 @@ class MuZeroConfig:
         self.fc_representation_layers = []  # Define the hidden layers in the representation network
         self.fc_dynamics_layers = [64]  # Define the hidden layers in the dynamics network
         self.fc_reward_layers = [64]  # Define the hidden layers in the reward network
-        self.fc_value_layers = []  # Define the hidden layers in the value network
-        self.fc_policy_layers = []  # Define the hidden layers in the policy network
+        self.fc_value_layers = [64]  # Define the hidden layers in the value network
+        self.fc_policy_layers = [64]  # Define the hidden layers in the policy network
 
 
 
@@ -320,12 +320,11 @@ class Hex:
             return False
 
     def render(self):
-        markers = ["", "", "", "", "", ""]
-        for i in range(1, 6):
-            markers[i] = markers[i - 1] + " "
+        print("\033[34m _ _ _ _ _ _\033[0m")
+        markers = ["\033[32m|\033[0m", "\033[32m |\033[0m", "\033[32m  |\033[0m", "\033[32m   |\033[0m", "\033[32m    |\033[0m", "\033[32m     |\033[0m"]
 
         for row in range(6):
-            line = list("A" if x == 1 else "B" if x == -1 else "0" for x in self.board[row])
+            line = list("\033[32mA\033[0m" if x == 1 else "\033[34mB\033[0m" if x == -1 else "*" for x in self.board[row])
             print(markers[row] + ' '.join(map(str, line)))
 
         print()
